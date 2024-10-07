@@ -12,6 +12,9 @@ Este proyecto contiene una base de datos basada en una tienda de videojuegos. El
 
 ## Introducción
 
+<img src="Forma1.png">
+
+
 El objetivo de este proyecto es proporcionar una base de datos sólida que ayude a la venta de videojuegos, consolas y accesorios. Este README proporciona una guía detallada de las consultas SQL que se pueden realizar en esta base de datos.
 
 ## Requerimientos
