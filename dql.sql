@@ -61,7 +61,24 @@ call ventasClienteFechas(1,"2023-10-01", "2023-10-31");
 
 -- 4. Calcular el total de ventas de un empleado en un mes dado.
 
+DROP FUNCTION IF EXISTS ventasEmpleadoMes;
+DELIMITER //
+CREATE FUNCTION ventasEmpleadoMes(idEmpleado INT, mes INT)
+RETURNS INT
+reads sql data
+BEGIN 
+    DECLARE totalVentas INT;
+    SELECT count(ventas.id_factura) into totalVentas
+    FROM facturas
+    JOIN ventas ON ventas.id_factura = facturas.id
+    where facturas.id_empleado = idEmpleado
+    group by facturas.id_empleado;
+    RETURN totalVentas;
+END //
 
+DELIMITER ;
+
+SELECT distinct facturas.id_empleado, ventasEmpleadoMes(facturas.id_empleado,10) from facturas;
 
 -- 5. Listar los productos más vendidos en un período determinado.
 
